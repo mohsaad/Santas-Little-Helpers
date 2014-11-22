@@ -1,0 +1,6 @@
+applications:
+- services:
+  - slh-model-service
+  name: santas-little-helper
+  path: webApp.war
+  memory: 512M
