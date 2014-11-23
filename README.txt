@@ -1,25 +1,23 @@
-# User Modeling Node.js Starter Application
+User Modeling Java Web Application
 
 
-## Files
+Files
 
-The User Modeling Node.js starter application has files as below:
+The User Modeling Java Web starter application contains the following contents:
 
+*   webApp.war
 
-*   app.js
+    This WAR file is actually the application itself. It is the only file that'll be pushed to and run on the Bluemix cloud. Every time your application code is updated, you'll need to regenerate this WAR file and push to Bluemix again. See the next section on detailed steps.
+    
+*   WebContent/
 
-	This file contains the server side JavaScript code for your application written using the Node.js API
+    This directory contains the client side code (HTML/CSS/JavaScript) of your application as well as compiled server side java classes and necessary JAR libraries. The content inside this directory is all you need to generate the final WAR file.
+    
+*   src/
 
-*   views/
+    This directory contains the server side code (JAVA) of your application. In this simple starter application, there's only one class: 'com.ibm.cloudoe.samples.HelloResource'
+    
+*   build.xml
 
-	This directory contains the views of the application. It is required by the express framework and jade template engine in this sample application.
-
-*   public/
-
-	This directory contains public resources of the application. It is required by the express framework in this sample application.
-
-*   package.json
-
-	This file is required by the Node.js environment. It specifies this Node.js project name, dependencies, and other configurations of your Node.js application.
-
-
+    This file allows you to easily build your application using Ant.
+    
