@@ -32,16 +32,4 @@
 		<servlet-name>OAuthReplyReddit</servlet-name>
 		<url-pattern>/redditauthreply</url-pattern>
 	</servlet-mapping>
-
-	<!-- persistance -->
-	<persistence-context-ref>
-		<persistence-context-ref-name>slh-usero/entitymanager</persistence-context-ref-name>
-		<persistence-unit-name>slh-user</persistence-unit-name>
-	</persistence-context-ref>
-	<resource-ref>
-		<res-ref-name>jdbc/mydbdatasource</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-		<res-sharing-scope>Shareable</res-sharing-scope>
-	</resource-ref>
 </web-app>

@@ -1,7 +1,6 @@
 applications:
 - services:
   - santas-little-helper-user_modeling
-  - slh-sql-db
   name: santas-little-helper
   host: slh
   path: webApp.war

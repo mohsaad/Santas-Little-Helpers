@@ -11,8 +11,8 @@ import net.dean.jraw.http.Credentials;
 import net.dean.jraw.http.oauth.AuthData;
 import net.dean.jraw.http.oauth.OAuthHelper;
 import net.dean.jraw.models.LoggedInAccount;
-import slh.persist.User;
-import slh.persist.UserManager;
+import slh.User;
+import slh.Util;
 
 public class RedditReply extends HttpServlet
 {
@@ -53,12 +53,14 @@ public class RedditReply extends HttpServlet
             AuthData data = authHelper.onUserChallenge(req.getRequestURL().toString() + "?" + req.getQueryString(), redirect, credentials);
             LoggedInAccount me = reddit.onAuthorized(data, credentials);
             
-            String username = me.data("name");
-            String redditKey = data.getAccessToken();
-            UserManager manager = new UserManager();
-            User user = manager.create(username, redditKey);
-            req.getSession().setAttribute("userid", user.getId());
-            req.getSession().setAttribute("reddit_auth_data", user.getId());
+            User user = new User();
+            user.id = Util.getNextId();
+            user.redditKey = data.getAccessToken();
+            user.name = me.data("name");
+            Util.userTable.put((int) user.id, user);
+            
+            req.getSession().setAttribute("userid", user.id);
+            req.getSession().setAttribute("reddit_auth_data", data);
         }
         catch (Exception e)
         {
