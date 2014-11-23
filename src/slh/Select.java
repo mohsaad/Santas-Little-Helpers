@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.dean.jraw.RedditOAuth2Client;
-import net.dean.jraw.models.LoggedInAccount;
 import slh.services.UserModelResponse;
 import slh.services.UserModelService;
+
+import com.google.common.base.Joiner;
+import com.google.common.io.CharStreams;
 
 public class Select extends HttpServlet
 {
@@ -31,11 +34,12 @@ public class Select extends HttpServlet
         req.setAttribute("traits", watson);
         
         RedditOAuth2Client reddit = (RedditOAuth2Client) req.getSession().getAttribute("reddit_obj");
+        List<String> topics = reddit.getTrendingSubreddits();
         
-        req.setAttribute("ebay", requestItems());
+        req.setAttribute("topics", topics);
+        req.setAttribute("ebay", requestItems(Joiner.on(',').join(topics)));
         
-        
-        super.doGet(req, resp);
+        req.getRequestDispatcher("/select.jsp").forward(req, resp);
     }
     
     public String requestItems(String query)
@@ -62,22 +66,15 @@ public class Select extends HttpServlet
             InputStream response = connection.getInputStream();
             
             
-            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuffer sb = new StringBuffer();
-            String line;
-            while ((line = rd.readLine()) != null)
-            {
-                sb.append(line);
-            }
+            BufferedReader rd = new BufferedReader(new InputStreamReader(response));
+            String out = CharStreams.toString(rd);
             rd.close();
-            return sb.toString();
-            
-            
+            return out;
         } 
         catch (Exception e)
         {
             e.printStackTrace();
-            return;
+            return null;
         }
 
     }
