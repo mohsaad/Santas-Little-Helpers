@@ -35,20 +35,6 @@
   <div class="row">
     <div class="col-md-1 col-md-offset-0"></div>
 
-
-<!-- 
-    <c:forEach var="trait" items="${traits}">
-      <div class="row <c:if test='${not empty trait.title }'>flag</c:if> ">
-        <div class="col-lg-10">
-          <span>${trait.id}</span>
-        </div>
-        <div class="col-lg-2">
-          <span>${trait.value}</span>
-        </div>
-      </div>
-    </c:forEach>
- -->
-
     <c:forEach var="trait" items="${traits}" varStatus="index">
       <div class="col-sm-3 person">
         <div class="list-group a">
