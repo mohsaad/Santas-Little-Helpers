@@ -17,7 +17,7 @@ import slh.persist.UserManager;
 public class RedditReply extends HttpServlet
 {
     private static final long serialVersionUID = 1150046621799636149L;
-    private static final String redirect = "http://slh.mybluemix.net/app/redditauthreply";
+    private static final String redirect = "http://slh.mybluemix.net/redditauthreply";
     private static final Credentials credentials = Credentials.webapp(null, null, "yUkDIAYOnlYlNg", "2tRSAPMd4VELiY1YAR-W8JLJbbo");
 
     @Override
@@ -31,6 +31,10 @@ public class RedditReply extends HttpServlet
             try
             {
                 String promptUrl = authHelper.getAuthorizationUrl(credentials.getClientId(), redirect, true, "history", "mysubreddits", "identity", "read");
+                
+                req.getSession().setAttribute("reddit_obj", reddit);
+                req.getSession().setAttribute("reddit_auth_helper", authHelper);
+                
                 resp.sendRedirect(promptUrl);
             }
             catch (IOException e)
@@ -43,7 +47,10 @@ public class RedditReply extends HttpServlet
         // Retrieve the access token
         try
         {
-            AuthData data = authHelper.onUserChallenge("http://slh.mybluemix.net/app/login", redirect, credentials);
+            // get it again
+            reddit = (RedditOAuth2Client) req.getSession().getAttribute("reddit_obj");
+            authHelper = (OAuthHelper) req.getSession().getAttribute("reddit_auth_helper");
+            AuthData data = authHelper.onUserChallenge(req.getRequestURL().toString() + "?" + req.getQueryString(), redirect, credentials);
             LoggedInAccount me = reddit.onAuthorized(data, credentials);
             
             String username = me.data("name");
@@ -51,13 +58,13 @@ public class RedditReply extends HttpServlet
             UserManager manager = new UserManager();
             User user = manager.create(username, redditKey);
             req.getSession().setAttribute("userid", user.getId());
-            req.getSession().setAttribute("reddit", reddit);
-            resp.sendRedirect("/welcome");
+            req.getSession().setAttribute("reddit_auth_data", user.getId());
         }
         catch (Exception e)
         {
             e.printStackTrace();
-            resp.sendRedirect("/welcome");
         }
+        
+        resp.sendRedirect("welcome");
     }
 }

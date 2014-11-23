@@ -20,9 +20,10 @@ public class Welcome extends HttpServlet
         // check signout
         if (!req.isRequestedSessionIdValid() || req.getParameter("signout") != null)
         {
-           req.getSession().removeAttribute("userid");
-           resp.sendRedirect("/app/welcome");
-           return;
+            req.getSession().invalidate();
+            req.getSession().removeAttribute("userid");
+            resp.sendRedirect("welcome");
+            return;
         }
         
         req.setAttribute("userid", req.getSession().getAttribute("userid"));
@@ -30,13 +31,15 @@ public class Welcome extends HttpServlet
         
         if (req.getSession().getAttribute("userid") == null)
         {
+            //resp.sendRedirect("/app/redditauthreply");
             req.getRequestDispatcher("/welcome.jsp").forward(req, resp);
         }
         else
         {
             UserManager manager = new UserManager();
-            User user = manager.get((long) req.getSession().getAttribute("userid"));
+            User user = manager.get((Long) req.getSession().getAttribute("userid"));
             req.setAttribute("user", user.getName());
+            //resp.sendRedirect("/redditauthreply");
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
     }
