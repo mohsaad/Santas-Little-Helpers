@@ -51,16 +51,18 @@
 
     <c:forEach var="trait" items="${traits}" varStatus="index">
       <div class="col-sm-3 person">
-       <h1>Personality</h1>
-       <div class="col-lg-2">
+        <div class="list-group a">
+         <h1>Personality</h1>
+        <div class="col-lg-2">
            <a href="#" class="list-group-item ${index}"> <span>${trait}</span>
        </div>
       </div>
+    </div>
     </c:forEach>
 
       <div class="col-sm-3 person" >
-        <div class="list-group a">
-          <h1> Personality</h1>
+        <div class="list-group b">
+          <h1> Interests </h1>
           <c:forEach var="topic" items="${topics}" varStatus="index">
           	<a href="#" class="list-group-item ${index}">${topic}</a>
           </c:forEach>c:forEach>
@@ -78,7 +80,7 @@
       </div><!-- /.col-sm-4 -->
     
     <!-- Items person likes -->
-      <div class="col-sm-3 item">
+     <!--  <div class="col-sm-3 item">
         <div class="list-group b">
           <h1> Interests</h1>
           <a href="#" class="list-group-item 4 active">
@@ -95,8 +97,8 @@
           
           <a href="#" class="list-group-item 8">
             pcmasterrace</a>
-        </div>
-       </div><!-- /.col-sm-4 -->
+        </div> -->
+       <!-- </div>/.col-sm-4 -->
   
     <!-- Amazon items -->
       <div class="col-sm-4 c">
@@ -110,12 +112,10 @@
           </a> <!-- link 1 -->
 <!--           </div>
  -->         
-          <div class="hide">
             <a href="#" class="list-group-item 08">
               <h4 class="list-group-item-heading">Item 2</h4>
               <p class="list-group-item-text">link 2</p>
             </a>
-          </div>
           
 <!--           <div class="hide">
  -->            <a href="#" class="list-group-item 06">
