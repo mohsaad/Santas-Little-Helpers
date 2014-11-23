@@ -27,23 +27,23 @@
   </head>
 
   <body role="document">
+  
+  <nav class="navbar navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav pull-right">
+            <p></p>
+            <a href="demo?signout=true"><button class="btn btn-lg btn-primary btn-danger" type="logout">Logout</button> </a> 
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-<!-- Character Types -->
-    <div class="col-sm-4">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">
-              Cras justo odio</a>
-            
-            <a href="#" class="list-group-item">What we think</a>
-            
-            <a href="#" class="list-group-item">Morbi leo risus</a>
-            
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
-          </div>
-    </div><!-- /.col-sm-4 -->
-    <!-- 
+    <div class="jumbotron">
+        <h1>Hello, ${user}!</h1>
+    </div>
+    <!-- -->
 
   </body>
 
