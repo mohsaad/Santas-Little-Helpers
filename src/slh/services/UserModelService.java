@@ -147,15 +147,15 @@ public class UserModelService
     	TraitTreeNode t = user.tree;
     	for(TraitTreeNode child1 : t.children)
         {
-    		if(!child1.isHeading())
+    		if(!child1.isNotHeading())
     		{
     			for(TraitTreeNode child2 : child1.children)
         		{
-        			if(!child2.isHeading())
+        			if(!child2.isNotHeading())
         			{
         				for(TraitTreeNode child3: child2.children)
             			{
-            				if(!child3.isHeading())
+            				if(!child3.isNotHeading())
             				{
             					for(TraitTreeNode child4 : child3.children)
             					{

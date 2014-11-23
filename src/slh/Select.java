@@ -38,7 +38,7 @@ public class Select extends HttpServlet
         {
             for (TraitTreeNode child : watson.tree.children)
             {
-                if (child.isHeading())
+                if (!child.isNotHeading())
                 {
                     for (TraitTreeNode second : child.children)
                     {

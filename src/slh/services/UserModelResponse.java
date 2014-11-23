@@ -15,7 +15,7 @@ public class UserModelResponse
         public double percentage;
         public List<TraitTreeNode> children = Lists.newArrayList();
         
-        public boolean isHeading()
+        public boolean isNotHeading()
         {
             return children == null || children.isEmpty();
         }
