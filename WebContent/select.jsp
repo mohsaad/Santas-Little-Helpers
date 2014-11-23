@@ -40,7 +40,7 @@
       <div class="list-group a">
         <div class="col-lg-2">
         <c:forEach var="trait" items="${traits}" varStatus="index">
-           <a href="#" class="list-group-item ${index}"> <span>${trait}</span>
+           <a href="#" class="list-group-item ${index}"> ${trait} </a>
        </div>
       </div>
     </div>
