@@ -21,6 +21,7 @@
 
     <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/examples/theme/theme.css" rel="stylesheet">
+    <script src="js/theme_files/ie-emulation-modes-warning.js"></script><style type="text/css"></style>
     
     <script src="js/snowstorm.js"></script>
   </head>
@@ -39,18 +40,14 @@
           <div class="container">
 
 
-              <form class="form-signin" role="form">
+              <form class="form-signin" role="form" method="post" acion="/app/welcome">
                 <h2 class="form-signin-heading">Please sign in</h2>
-                <label for="string" class="sr-only">string</label>
-
+                <label for="inputEmail" class="sr-only">Email address</label>
                
-                <input style="width:300px;" type="string" id="string" class="form-control" placeholder="string" required="" autofocus="">
-                 <input style="width:300px;" type="string" id="string" class="form-control" placeholder="string" required="" autofocus="">
-                  <input style="width:300px;" type="string" id="string" class="form-control" placeholder="string" required="" autofocus="">
-                   <input style="width:300px;" type="string" id="string" class="form-control" placeholder="string" required="" autofocus="">
-                    <input style="width:300px;" type="string" id="string" class="form-control" placeholder="string" required="" autofocus="">
+                <input name="email" style="width:300px;" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
                 <p> </p>
-                <button class="btn btn-lg btn-primary btn-success" type="submit">Add</button> </a>
+                <!-- @Todo Add twitter and reddit OAuth -->
+                <button class="btn btn-lg btn-primary btn-success" type="submit">Get Started</button>
               </form>
 
             </div> <!-- /container -->
