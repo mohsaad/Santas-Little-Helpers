@@ -17,9 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.dean.jraw.RedditOAuth2Client;
 import slh.services.UserModelResponse;
+import slh.services.UserModelResponse.TraitTreeNode;
 import slh.services.UserModelService;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.google.common.io.CharStreams;
 
 public class Select extends HttpServlet
@@ -31,7 +33,23 @@ public class Select extends HttpServlet
     {
         // ALL THE INFO!!!!
         UserModelResponse watson = UserModelService.getUserModel(new TweetGetter().getAllTweets());
-        req.setAttribute("traits", watson);
+        List<String> traits = Lists.newLinkedList();
+        for (TraitTreeNode child : watson.tree.children)
+        {
+            if (child.isHeading())
+            {
+                for (TraitTreeNode second : child.children)
+                {
+                    traits.add(second.name + "  " + (second.percentage*100)+ "%");
+                }
+            }
+            else
+            {
+                traits.add(child.name + "  " + (child.percentage*100)+ "%");
+            }
+                
+        }
+        req.setAttribute("traits", traits);
         
         RedditOAuth2Client reddit = (RedditOAuth2Client) req.getSession().getAttribute("reddit_obj");
         List<String> topics = reddit.getTrendingSubreddits();

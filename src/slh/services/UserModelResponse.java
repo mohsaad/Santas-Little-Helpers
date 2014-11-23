@@ -11,9 +11,9 @@ public class UserModelResponse
     
     public static final class TraitTreeNode
     {
-        String id, name;
-        double percentage;
-        List<TraitTreeNode> children = Lists.newArrayList();
+        public String id, name;
+        public double percentage;
+        public List<TraitTreeNode> children = Lists.newArrayList();
         
         public boolean isHeading()
         {
