@@ -25,12 +25,12 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>OAuthReply</servlet-name>
+		<servlet-name>OAuthReplyReddit</servlet-name>
 		<servlet-class>slh.OAuthReplyServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>OAuthReply</servlet-name>
-		<url-pattern>/oauthreply</url-pattern>
+		<servlet-name>OAuthReplyReddit</servlet-name>
+		<url-pattern>/redditauthreply</url-pattern>
 	</servlet-mapping>
 
 	<!-- uh.. duno -->
