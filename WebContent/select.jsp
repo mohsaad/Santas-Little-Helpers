@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
   <head>
 
@@ -22,8 +25,8 @@
 
     <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/examples/theme/theme.css" rel="stylesheet">
-    <script src="./theme_files/ie-emulation-modes-warning.js"></script><style type="text/css"></style>
-    <script src="main.js"></script>
+    <script src="js/theme_files/ie-emulation-modes-warning.js"></script><style type="text/css"></style>
+    <script src="js/main.js"></script>
     <script src="http://vestride.github.io/Shuffle/dist/jquery.shuffle.modernizr.js"></script>
   </head>
 
@@ -32,7 +35,20 @@
   <div class="row">
     <div class="col-md-1 col-md-offset-0"></div>
 
-    <!-- Personality Types -->
+<!-- 
+		<c:forEach var="trait" items="${traits}">
+			<div class="row <c:if test='${not empty trait.title }'>flag</c:if> ">
+				<div class="col-lg-10">
+					<span>${trait.id}</span>
+				</div>
+				<div class="col-lg-2">
+					<span>${trait.value}</span>
+				</div>
+			</div>
+		</c:forEach>
+ -->
+
+		<!-- Personality Types -->
       <div class="col-sm-3 person" >
         <div class="list-group a">
           <h1> Personality</h1>

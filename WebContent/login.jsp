@@ -45,7 +45,11 @@
     <div class="jumbotron">
         <h1>Hello, ${user}!</h1>
     </div>
-    <!-- -->
+
+	<a href="select">
+		<button class="btn btn-lg btn-primary">See the information!</button>
+	</a>
+	<!-- -->
 
   </body>
 

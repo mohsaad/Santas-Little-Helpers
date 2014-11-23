@@ -1,4 +1,4 @@
-package slh.reddit;
+package slh;
 
 import java.io.IOException;
 
@@ -11,8 +11,6 @@ import net.dean.jraw.http.Credentials;
 import net.dean.jraw.http.oauth.AuthData;
 import net.dean.jraw.http.oauth.OAuthHelper;
 import net.dean.jraw.models.LoggedInAccount;
-import slh.User;
-import slh.Util;
 
 public class RedditReply extends HttpServlet
 {

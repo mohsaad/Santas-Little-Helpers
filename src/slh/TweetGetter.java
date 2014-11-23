@@ -11,24 +11,13 @@ import twitter4j.conf.ConfigurationBuilder;
 public class TweetGetter 
 {
 
-	private String userKey;
-	private String userSecretKey;
+	private String userKey = "312215961-VEtIIx88ubWxIif7449KbG3Pp9SbKLpawy4J1rI5";
+	private String userSecretKey = "312215961-VEtIIx88ubWxIif7449KbG3Pp9SbKLpawy4J1rI5";
 	private ConfigurationBuilder cb;
 	
-	
-	public TweetGetter(String privKey, String privKeySecret)
+	public TweetGetter()
 	{
-		userKey = privKey;
-		userSecretKey = privKeySecret;
 		cb = authorize(userKey, userSecretKey);
-	}
-	
-	
-	public static void main(String[] args) 
-	{
-		TweetGetter tg = new TweetGetter(args[0], args[1]);
-		StringBuilder toQuery = tg.getAllTweets();
-		System.out.println(toQuery);
 	}
 	
 	private StringBuilder buildQuery(List<Status> statuses)
@@ -53,7 +42,7 @@ public class TweetGetter
 		return cb;
 	}
 	
-	public StringBuilder getAllTweets()
+	public String getAllTweets()
 	{
 		try
 		{
@@ -61,16 +50,12 @@ public class TweetGetter
 			Twitter twitter = tf.getInstance();
 		
 			List<Status> statuses = twitter.getHomeTimeline();
-			return buildQuery(statuses);
+			return buildQuery(statuses).toString();
 		}
 		catch (TwitterException te)
 		{
 			te.printStackTrace();
-			System.out.println("Failed");
-			System.exit(-1);
-			return new StringBuilder();
+			return null;
 		}
 	}
-
-
 }
