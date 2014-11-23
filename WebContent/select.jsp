@@ -49,21 +49,21 @@
     </c:forEach>
  -->
 
-    <c:forEach var="trait" items="${traits}">
+    <c:forEach var="trait" items="${traits}" varStatus="index">
       <div class="col-sm-3 person">
-       <h1>${trait}</h1>
-        <div class="col-lg-2">
-           <a href="#" class="list-group-item 0"> <span>${trait.value}</span>
-        </div>
+       <h1>Personality</h1>
+       <div class="col-lg-2">
+           <a href="#" class="list-group-item ${index}"> <span>${trait}</span>
+       </div>
       </div>
     </c:forEach>
 
-		<!-- Personality Types -->
       <div class="col-sm-3 person" >
         <div class="list-group a">
           <h1> Personality</h1>
-          <a href="#" class="list-group-item ${loop.index}" >
-            ${trait}</a>
+          <c:forEach var="topic" items="${topics}" varStatus="index">
+          	<a href="#" class="list-group-item ${index}">${topic}</a>
+          </c:forEach>c:forEach>
        <!--    
           <a href="#" class="list-group-item 1">
             {Adventurous}</a>
