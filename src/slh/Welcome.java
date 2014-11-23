@@ -23,9 +23,6 @@ public class Welcome extends HttpServlet
             return;
         }
         
-        req.setAttribute("userid", req.getSession().getAttribute("userid"));
-        req.setAttribute("signout", req.getParameter("signout"));
-        
         if (req.getSession().getAttribute("userid") == null)
         {
             req.getRequestDispatcher("/welcome.jsp").forward(req, resp);

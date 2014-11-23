@@ -28,7 +28,6 @@
 
   <body role="document" style="background: #a90329;" >
   <script type="text/rocketscript" data-rocketsrc="assets/js/snowstorm.js" data-rocketoptimized="true"></script>
-  	userid=${userid}
     <div class="container theme-showcase" role="main">
   
         <div class="jumbotron">
