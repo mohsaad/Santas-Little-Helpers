@@ -35,35 +35,35 @@
   <div class="row">
     <div class="col-md-1 col-md-offset-0"></div>
 
+
 <!-- 
-		<c:forEach var="trait" items="${traits}">
-			<div class="row <c:if test='${not empty trait.title }'>flag</c:if> ">
-				<div class="col-lg-10">
-					<span>${trait.id}</span>
-				</div>
-				<div class="col-lg-2">
-					<span>${trait.value}</span>
-				</div>
-			</div>
-		</c:forEach>
+    <c:forEach var="trait" items="${traits}">
+      <div class="row <c:if test='${not empty trait.title }'>flag</c:if> ">
+        <div class="col-lg-10">
+          <span>${trait.id}</span>
+        </div>
+        <div class="col-lg-2">
+          <span>${trait.value}</span>
+        </div>
+      </div>
+    </c:forEach>
  -->
+
+    <c:forEach var="trait" items="${traits}">
+      <div class="col-sm-3 person">
+       <h1>${trait}</h1>
+        <div class="col-lg-2">
+           <a href="#" class="list-group-item 0"> <span>${trait.value}</span>
+        </div>
+      </div>
+    </c:forEach>
 
 		<!-- Personality Types -->
       <div class="col-sm-3 person" >
         <div class="list-group a">
           <h1> Personality</h1>
-          <a href="#" class="list-group-item 0 active">
-            Artist</a>
-          
-          <a href="#" class="list-group-item 1">
-            Adventurous</a>
-          
-          <a href="#" class="list-group-item 2">
-            Sociable</a>
-          
-          <a href="#" class="list-group-item 3">
-            Challenger</a>
-          
+          <a href="#" class="list-group-item ${loop.index}" >
+            ${trait}</a>
         </div>
       </div><!-- /.col-sm-4 -->
     
