@@ -5,20 +5,22 @@ $(document).ready(function(){
 		$(e.target).addClass('active');
 		console.log($(e.target).text());
 	// }
-	var str1 = $('.a').find('.active').attr('class')[16];
-	var str2 = $('.b').find('.active').attr('class')[16];
+	// var str1 = $('.a').find('.active').attr('class')[16];
+	// var str2 = $('.b').find('.active').attr('class')[16];
 
-	var str3 = str1.concat(str2);
-	// var fin ='.\''.concat(str3).concat('\'');
-	console.log(str3);
-
-	var yolo = $('.c').find($(str3));
-	.toggleClass("hide");
-	});
-	$('.c').find(function(){
-		$(this).toggleClass("hide");
-	});
+	// var str3 = str1.concat(str2);
+	// // var fin ='.\''.concat(str3).concat('\'');
+	// console.log(str3);
 });
+});
+
+	// var yolo = $('.c').find($(str3));
+	// .toggleClass("hide");
+	// });
+	
+	// $('.c').find(function(){
+	// 	$(this).toggleClass("hide");
+	// });
 
 //Snow effect
 /*window.onload = function(){

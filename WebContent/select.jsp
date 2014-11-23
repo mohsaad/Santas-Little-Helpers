@@ -93,13 +93,13 @@
         <div class="list-group">
           <h1>Recommended Items</h1>
           
-          <div class="hide">
-           <a href="#" class="list-group-item 37 active">
+<!--           <div class="hide">
+ -->           <a href="#" class="list-group-item 37 active">
             <h4 class="list-group-item-heading">Item 1</h4>
             <p class="list-group-item-text">link 1</p>
           </a> <!-- link 1 -->
-          </div>
-         
+<!--           </div>
+ -->         
           <div class="hide">
             <a href="#" class="list-group-item 08">
               <h4 class="list-group-item-heading">Item 2</h4>
@@ -107,13 +107,13 @@
             </a>
           </div>
           
-          <div class="hide">
-            <a href="#" class="list-group-item 06">
+<!--           <div class="hide">
+ -->            <a href="#" class="list-group-item 06">
               <h4 class="list-group-item-heading">Item 3</h4>
               <p class="list-group-item-text">Link 3</p>
             </a>
-          </div>
-        
+<!--           </div>
+ -->        
         </div>
       </div><!-- /.col-sm-4 -->
 
