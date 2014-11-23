@@ -39,16 +39,17 @@
         
           <div class="container">
 
-
+                <!-- @Todo Add twitter and reddit OAuth -->
+<!-- 
               <form class="form-signin" role="form" method="post" acion="/app/welcome">
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <label for="inputEmail" class="sr-only">Email address</label>
                
                 <input name="email" style="width:300px;" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
                 <p> </p>
-                <!-- @Todo Add twitter and reddit OAuth -->
                 <button class="btn btn-lg btn-primary btn-success" type="submit">Get Started</button>
-              </form>
+              </form> -->
+              <a href="/app/redditauthreply?loginReddit=true"><button class="btn btn-lg btn-primary btn-danger">REDDIT!!!</button> </a> 
 
             </div> <!-- /container -->
 

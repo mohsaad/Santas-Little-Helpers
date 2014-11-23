@@ -2,34 +2,62 @@ package slh.reddit;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import slh.OAuthReplyServlet;
+import net.dean.jraw.RedditOAuth2Client;
+import net.dean.jraw.http.Credentials;
+import net.dean.jraw.http.oauth.AuthData;
+import net.dean.jraw.http.oauth.OAuthHelper;
+import net.dean.jraw.models.LoggedInAccount;
+import slh.persist.User;
+import slh.persist.UserManager;
 
-public class RedditReply extends OAuthReplyServlet
+public class RedditReply extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
-    protected static final String OAUTH_API_DOMAIN = "https://oauth.reddit.com";
-    protected static final String OAUTH_AUTH_URL = "https://ssl.reddit.com/api/v1/authorize";
-    protected static final String OAUTH_TOKEN_URL = "https://ssl.reddit.com/api/v1/access_token";
-    protected static final String clientid = "yUkDIAYOnlYlNg";
-    protected static final String secret = "2tRSAPMd4VELiY1YAR-W8JLJbbo";
-    
+    private static final long serialVersionUID = 1150046621799636149L;
+    private static final String redirect = "http://slh.mybluemix.net/app/redditauthreply";
+    private static final Credentials credentials = Credentials.webapp(null, null, "yUkDIAYOnlYlNg", "2tRSAPMd4VELiY1YAR-W8JLJbbo");
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
     {
-        super.doGet(req, resp);
-    }
+        RedditOAuth2Client reddit = new RedditOAuth2Client("slh/1.0");
+        OAuthHelper authHelper = reddit.getOAuthHelper();
+        
+        if (req.getParameter("loginReddit") != null)
+        {
+            try
+            {
+                String promptUrl = authHelper.getAuthorizationUrl(credentials.getClientId(), redirect, true, "history", "mysubreddits", "identity", "read");
+                resp.sendRedirect(promptUrl);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            return;
+        }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-        // TODO Auto-generated method stub
-        super.doPost(req, resp);
+        // Retrieve the access token
+        try
+        {
+            AuthData data = authHelper.onUserChallenge("http://slh.mybluemix.net/app/login", redirect, credentials);
+            LoggedInAccount me = reddit.onAuthorized(data, credentials);
+            
+            String username = me.data("name");
+            String redditKey = data.getAccessToken();
+            UserManager manager = new UserManager();
+            User user = manager.create(username, redditKey);
+            req.getSession().setAttribute("userid", user.getId());
+            req.getSession().setAttribute("reddit", reddit);
+            resp.sendRedirect("/welcome");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            resp.sendRedirect("/welcome");
+        }
     }
-    
-    
 }

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import slh.persist.User;
+import slh.persist.UserManager;
+
 public class Welcome extends HttpServlet
 {
     private static final long serialVersionUID = -393800861225499483L;
@@ -31,17 +34,10 @@ public class Welcome extends HttpServlet
         }
         else
         {
-            req.setAttribute("user", "AbrarSyed");
+            UserManager manager = new UserManager();
+            User user = manager.get((long) req.getSession().getAttribute("userid"));
+            req.setAttribute("user", user.getName());
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-        if (req.getParameter("email") != null)
-            req.getSession().setAttribute("userid", 100);
-        
-        doGet(req, resp);
     }
 }

@@ -22,10 +22,6 @@ public class User
     String name;
 
     @Basic
-    @Column(name = "email")
-    String email;
-
-    @Basic
     @Column(name = "reddit_key")
     String redditKey;
 
@@ -55,16 +51,6 @@ public class User
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public void setEmail(String email)
-    {
-        this.email = email;
     }
 
     public String getRedditKey()
