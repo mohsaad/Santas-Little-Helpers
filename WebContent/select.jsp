@@ -27,11 +27,13 @@
     <link href="http://getbootstrap.com/examples/theme/theme.css" rel="stylesheet">
     <script src="js/theme_files/ie-emulation-modes-warning.js"></script><style type="text/css"></style>
     <script src="js/main.js"></script>
+        <script src="js/snowstorm.js"></script>
+
     <script src="http://vestride.github.io/Shuffle/dist/jquery.shuffle.modernizr.js"></script>
   </head>
 
   <body role="document" style="background: #6b92b9; display: block;">
-
+<script type="text/rocketscript" data-rocketsrc="js/snowstorm.js" data-rocketoptimized="true"></script>
   <div class="row">
     <div class="col-md-1 col-md-offset-0"></div>
 
