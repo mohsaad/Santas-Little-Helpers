@@ -10,11 +10,31 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>Application Servlet</servlet-name>
-		<servlet-class>com.ibm.cloudoe.samples.DemoServlet</servlet-class>
+		<servlet-class>slh.Welcome</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Application Servlet</servlet-name>
 		<url-pattern>/demo</url-pattern>
 	</servlet-mapping>
+	
+  <persistence-context-ref>
+    <persistence-context-ref-name>openjpa-todo/entitymanager</persistence-context-ref-name>
+    <persistence-unit-name>openjpa-todo</persistence-unit-name>
+  </persistence-context-ref>
+
+  <resource-ref>
+    <!-- The cloudAutowiring-1.0 Liberty feature will resolve this to whatever 
+         the database service name is -->
+    <!-- When running locally without this feature, create a datasource with 
+         the JNDI name "jdbc/mydbdatasource" in server.xml -->
+    <!-- If using MySQL locally then use the "url" property and append "?relaxAutoCommit=true", for example: 
+         <dataSource id='mysql-datasource' jdbcDriverRef='mysql-driver' jndiName='jdbc/mydbdatasource'> 
+         <properties user='root' password='password' url="jdbc:mysql://localhost:3306/db?relaxAutoCommit=true"/> 
+         </dataSource> -->
+    <res-ref-name>jdbc/mydbdatasource</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
 </web-app>
