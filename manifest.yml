@@ -3,5 +3,8 @@ applications:
   - santas-little-helper-user_modeling
   - slh-sql-db
   name: santas-little-helper
+  name: slh
   path: webApp.war
+  domain: mybluemix.net
   memory: 512M
+  instances: 1
