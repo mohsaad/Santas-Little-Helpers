@@ -64,6 +64,16 @@
           <h1> Personality</h1>
           <a href="#" class="list-group-item ${loop.index}" >
             ${trait}</a>
+       <!--    
+          <a href="#" class="list-group-item 1">
+            {Adventurous}</a>
+          
+          <a href="#" class="list-group-item 2">
+            Sociable</a>
+          
+          <a href="#" class="list-group-item 3">
+            Challenger</a> -->
+          
         </div>
       </div><!-- /.col-sm-4 -->
     
