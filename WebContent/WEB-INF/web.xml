@@ -1,40 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"  
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"  
-    id="WebApp_ID" version="2.5">  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
 
-  <display-name>Java Starter Application</display-name>
+	<!-- start -->
+	<display-name>Santas Little Helper</display-name>
 	<welcome-file-list>
-		<welcome-file>demo</welcome-file>
+		<welcome-file>/</welcome-file>
 	</welcome-file-list>
+	
 	<servlet>
-		<servlet-name>Application Servlet</servlet-name>
+		<servlet-name>Welcome</servlet-name>
 		<servlet-class>slh.Welcome</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Application Servlet</servlet-name>
-		<url-pattern>/demo</url-pattern>
+		<servlet-name>Welcome</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-  <persistence-context-ref>
-    <persistence-context-ref-name>openjpa-todo/entitymanager</persistence-context-ref-name>
-    <persistence-unit-name>openjpa-todo</persistence-unit-name>
-  </persistence-context-ref>
+		<servlet-mapping>
+		<servlet-name>Welcome</servlet-name>
+		<url-pattern>/welcome</url-pattern>
+	</servlet-mapping>
 
-  <resource-ref>
-    <!-- The cloudAutowiring-1.0 Liberty feature will resolve this to whatever 
-         the database service name is -->
-    <!-- When running locally without this feature, create a datasource with 
-         the JNDI name "jdbc/mydbdatasource" in server.xml -->
-    <!-- If using MySQL locally then use the "url" property and append "?relaxAutoCommit=true", for example: 
-         <dataSource id='mysql-datasource' jdbcDriverRef='mysql-driver' jndiName='jdbc/mydbdatasource'> 
-         <properties user='root' password='password' url="jdbc:mysql://localhost:3306/db?relaxAutoCommit=true"/> 
-         </dataSource> -->
-    <res-ref-name>jdbc/mydbdatasource</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-    <res-sharing-scope>Shareable</res-sharing-scope>
-  </resource-ref>
+	<servlet>
+		<servlet-name>OAuthReplyReddit</servlet-name>
+		<servlet-class>slh.OAuthReplyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OAuthReplyReddit</servlet-name>
+		<url-pattern>/redditauthreply</url-pattern>
+	</servlet-mapping>
+
+	<!-- uh.. duno -->
+
+	<persistence-context-ref>
+		<persistence-context-ref-name>openjpa-todo/entitymanager</persistence-context-ref-name>
+		<persistence-unit-name>openjpa-todo</persistence-unit-name>
+	</persistence-context-ref>
+
+	<resource-ref>
+		<!-- The cloudAutowiring-1.0 Liberty feature will resolve this to whatever 
+			the database service name is -->
+		<!-- When running locally without this feature, create a datasource with 
+			the JNDI name "jdbc/mydbdatasource" in server.xml -->
+		<!-- If using MySQL locally then use the "url" property and append "?relaxAutoCommit=true", 
+			for example: <dataSource id='mysql-datasource' jdbcDriverRef='mysql-driver' 
+			jndiName='jdbc/mydbdatasource'> <properties user='root' password='password' 
+			url="jdbc:mysql://localhost:3306/db?relaxAutoCommit=true"/> </dataSource> -->
+		<res-ref-name>jdbc/mydbdatasource</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
 </web-app>

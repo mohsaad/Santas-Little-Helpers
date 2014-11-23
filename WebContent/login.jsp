@@ -27,13 +27,12 @@
   </head>
 
   <body role="document">
-  
   <nav class="navbar navbar navbar-fixed-top" role="navigation">
       <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav pull-right">
             <p></p>
-            <a href="demo?signout=true"><button class="btn btn-lg btn-primary btn-danger" type="logout">Logout</button> </a> 
+            <a href="/app/welcome?signout=true"><button class="btn btn-lg btn-primary btn-danger" type="logout">Logout</button> </a> 
             </li>
           </ul>
         </div><!--/.nav-collapse -->
