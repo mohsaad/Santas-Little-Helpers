@@ -40,9 +40,9 @@ var appInfo = JSON.parse(process.env.VCAP_APPLICATION || "{}");
 // If VCAP_SERVICES is undefined we use a local module as mockup
 
 // defaults for dev outside bluemix
-var service_url = '<service_url>';
-var service_username = '<service_username>';
-var service_password = '<service_password>';
+var service_url = 'https://gateway.watsonplatform.net/systemu/service/';
+var service_username = 'fa3b912c-17e2-4d14-a705-b2aa7477a06c';
+var service_password = '5Pzp1j0xdlSF';
 
 if (process.env.VCAP_SERVICES) {
   console.log('Parsing VCAP_SERVICES');
