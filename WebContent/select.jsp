@@ -35,16 +35,14 @@
   <div class="row">
     <div class="col-md-1 col-md-offset-0"></div>
 
-    <h1>Personality</h1>
      <div class="col-sm-3 person">
       <div class="list-group a">
-        <div class="col-lg-2">
+        <h1>Personality</h1>
         <c:forEach var="trait" items="${traits}" varStatus="index">
            <a href="#" class="list-group-item ${index}"> ${trait} </a>
-       </div>
+        </c:forEach>
       </div>
     </div>
-    </c:forEach>
 
       <div class="col-sm-3 person" >
         <div class="list-group b">
