@@ -28,7 +28,7 @@ public class RedditReply extends HttpServlet
         {
             try
             {
-                String promptUrl = authHelper.getAuthorizationUrl(credentials.getClientId(), redirect, true, "history", "mysubreddits", "identity", "read");
+                String promptUrl = authHelper.getAuthorizationUrl(credentials.getClientId(), redirect, false, "history", "mysubreddits", "identity", "read");
                 
                 req.getSession().setAttribute("reddit_obj", reddit);
                 req.getSession().setAttribute("reddit_auth_helper", authHelper);
