@@ -1,19 +1,28 @@
 package slh;
 
+import java.util.ArrayList;
 import java.io.*;
+import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 import java.net.*;
-import
+import com.google.*;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+import org.w3c.dom.*;
+import org.xml.sax.*;
 
 public class makeReq 
 {
-	public class ebayItem
+	public class EbayItem
 	{
 		public String name;
 		public String url;
 		public String img_url;
 		public String price;
 		
-		public ebayItem(String name, String url, String img_url, String price)
+		public EbayItem(String name, String url, String img_url, String price)
 		{
 			this.name = name;
 			this.url = url;
@@ -30,7 +39,9 @@ public class makeReq
 	public static void main(String[] args)
 	{
 		makeReq test = new makeReq();
-		System.out.println(test.requestItems("mario"));
+		String out = test.requestItems("mario").toString();
+		//System.out.println(out);
+		test.convertToItems(out);
 		
 	}
 	
@@ -89,7 +100,51 @@ public class makeReq
 		}
 	}
 	
-	public 
+	public ArrayList<EbayItem> convertToItems(String xmlToConv)
+	{
+		ArrayList<EbayItem> prods = new ArrayList<EbayItem>();
+		try
+		{
+			// build XML doc
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			ByteArrayInputStream tempStream = new ByteArrayInputStream(xmlToConv.getBytes("utf-8"));
+			InputSource tempIn = new InputSource(tempStream);
+			Document dom = db.parse(tempIn);		
+			tempStream.close();
+			
+			
+
+			String temp_name; 
+			String temp_url;
+			String temp_img;
+			String temp_price;
+			
+			//get all info for products
+			Element doc = dom.getDocumentElement();
+			NodeList names = doc.getElementsByTagName("title"); 
+			NodeList urls = doc.getElementsByTagName("viewItemURL");
+			NodeList imgs = doc.getElementsByTagName("galleryURL");
+			NodeList prices = doc.getElementsByTagName("currentPrice");
+			System.out.println(imgs.item(0).getTextContent());
+			
+			for(int i = 0; i < prices.getLength(); i++)
+			{
+				temp_name = names.item(i).getTextContent();
+				temp_url = urls.item(i).getTextContent();
+				temp_img = imgs.item(i).getTextContent();
+				temp_price = prices.item(i).getTextContent();
+				prods.add(new EbayItem(temp_name, temp_url, temp_img, temp_price));
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error\n");
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		return prods;
+	}
 	
 	
 	
