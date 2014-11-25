@@ -28,7 +28,6 @@
 
   <body role="document" style="background: #a90329;" >
   <script type="text/rocketscript" data-rocketsrc="assets/js/snowstorm.js" data-rocketoptimized="true"></script>
-  	userid=${userid}
     <div class="container theme-showcase" role="main">
   
         <div class="jumbotron">
@@ -36,24 +35,14 @@
             <h1>Santa's Little Helper</h1>
             
             <p>This is a tool to help you find the perfect gift for that special stranger in your secret santa life.</p>
-        
-          <div class="container">
 
-                <!-- @Todo Add twitter and reddit OAuth -->
-<!-- 
-              <form class="form-signin" role="form" method="post" acion="/app/welcome">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <label for="inputEmail" class="sr-only">Email address</label>
-               
-                <input name="email" style="width:300px;" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                <p> </p>
-                <button class="btn btn-lg btn-primary btn-success" type="submit">Get Started</button>
-              </form> -->
-              <a href="redditauthreply?loginReddit=true"><button class="btn btn-lg btn-primary btn-danger">REDDIT!!!</button> </a> 
+			<div class="container">
+				<a href="redditauthreply?loginReddit=true">
+					<button class="btn btn-lg btn-primary">Sign in With Reddit</button>
+				</a>
+			</div>
 
-            </div> <!-- /container -->
-
-        </div>
+		</div>
   
     </div>
   

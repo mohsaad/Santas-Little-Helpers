@@ -30,7 +30,6 @@
   </head>
 
   <body role="document">
-    	userid=${userid}
   <nav class="navbar navbar navbar-fixed-top" role="navigation">
       <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
@@ -46,7 +45,11 @@
     <div class="jumbotron">
         <h1>Hello, ${user}!</h1>
     </div>
-    <!-- -->
+
+	<a href="select">
+		<button class="btn btn-lg btn-primary">See the information!</button>
+	</a>
+	<!-- -->
 
   </body>
 

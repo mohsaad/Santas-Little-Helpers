@@ -26,22 +26,19 @@
 
 	<servlet>
 		<servlet-name>OAuthReplyReddit</servlet-name>
-		<servlet-class>slh.reddit.RedditReply</servlet-class>
+		<servlet-class>slh.RedditReply</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OAuthReplyReddit</servlet-name>
 		<url-pattern>/redditauthreply</url-pattern>
 	</servlet-mapping>
-
-	<!-- persistance -->
-	<persistence-context-ref>
-		<persistence-context-ref-name>slh-usero/entitymanager</persistence-context-ref-name>
-		<persistence-unit-name>slh-user</persistence-unit-name>
-	</persistence-context-ref>
-	<resource-ref>
-		<res-ref-name>jdbc/mydbdatasource</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-		<res-sharing-scope>Shareable</res-sharing-scope>
-	</resource-ref>
+	
+		<servlet>
+		<servlet-name>Select</servlet-name>
+		<servlet-class>slh.Select</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Select</servlet-name>
+		<url-pattern>/select</url-pattern>
+	</servlet-mapping>
 </web-app>
