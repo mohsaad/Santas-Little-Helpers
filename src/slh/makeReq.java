@@ -5,11 +5,9 @@ import java.io.*;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.net.*;
-import com.google.*;
+import com.google.gson.*;
 import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
+
 import org.w3c.dom.*;
 import org.xml.sax.*;
 
@@ -36,12 +34,16 @@ public class makeReq
 		
 	}
 	
+	public String getProducts(String query)
+	{
+		String temp1 = requestItems(query).toString();
+		return makeGSON(convertToItems(temp1));
+	}
+	
 	public static void main(String[] args)
 	{
 		makeReq test = new makeReq();
-		String out = test.requestItems("mario").toString();
-		//System.out.println(out);
-		test.convertToItems(out);
+		System.out.println(test.getProducts("zelda"));
 		
 	}
 	
@@ -126,7 +128,7 @@ public class makeReq
 			NodeList urls = doc.getElementsByTagName("viewItemURL");
 			NodeList imgs = doc.getElementsByTagName("galleryURL");
 			NodeList prices = doc.getElementsByTagName("currentPrice");
-			System.out.println(imgs.item(0).getTextContent());
+			//System.out.println(imgs.item(0).getTextContent());
 			
 			for(int i = 0; i < prices.getLength(); i++)
 			{
@@ -146,7 +148,14 @@ public class makeReq
 		return prods;
 	}
 	
-	
+	public String makeGSON(ArrayList<EbayItem> products)
+	{
+		if(products.size() <= 0)
+			return "";
+		
+		Gson gson = new Gson();
+		return gson.toJson(products).toString();
+	}
 	
 }
 
