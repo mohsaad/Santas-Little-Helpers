@@ -21,3 +21,7 @@ And anything else you might want or think is relevant.
 # Testing
 The easy way to test is to run ```./gradlew run```.
 The hard way is to install the Liberty profile eclipse plugin and run it through there. If anyone wants to do that they should let me (AbrarSyed) know.
+
+#Deploying to bluemix
+```gradle deploy```
+You will need the CloudFOundry program installed, and logged in. Dont bother with this for now.. Eventually il add the CloudFoundry eclipse plugin and we can use that.
