@@ -1,4 +1,11 @@
-bin/
-WebContent/WEB-INF/classes
-build/
-/webApp.war
+# gradle and stuff
+bin
+build
+.gradle
+src/main/webapp/WEB-INF/classes
+
+#eclipse
+.project
+.classpath
+.settings
+

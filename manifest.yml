@@ -2,8 +2,8 @@ applications:
 - services:
   - santas-little-helper-user_modeling
   name: santas-little-helper
+  path: build/libs/Santas-Little-Helper.war
   host: slh
-  path: webApp.war
   domain: mybluemix.net
   memory: 512M
   instances: 1

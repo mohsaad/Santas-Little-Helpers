@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jetty'
+
+repositories {
+	mavenCentral()
+    jcenter()
+}
+
+dependencies {
+	compile 'com.google.guava:guava:18.0'
+	compile 'com.google.code.gson:gson:2.3.1'
+	compile 'org.twitter4j:twitter4j-core:4.0.2'
+
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+	providedCompile 'javax.servlet:jstl:1.2'
+	compile fileTree("lib")
+}
+
+war {
+	includeEmptyDirs = false
+	duplicatesStrategy = 'exclude'
+
+	doFirst {
+		project.delete("src/main/webapp/WEB-INF/classes/*")
+	}	
+}
+
+eclipse.classpath.defaultOutputDir = file('src/main/webapp/WEB-INF/classes')
+
+task run(dependsOn: "jettyRunWar")
+
+task deploy(type: Exec, dependsOn: 'build') {
+	executable = 'cf'
+	args "push"
+	workingDir = project.projectDir
+}
