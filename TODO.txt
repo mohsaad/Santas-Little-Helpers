@@ -1,0 +1,4 @@
+1. Fix Twitter Integration
+2. Make ranking system more accurate
+3. Show products from ebay output on website
+4. Create login system
