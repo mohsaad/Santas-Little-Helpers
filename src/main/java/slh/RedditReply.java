@@ -1,6 +1,7 @@
 package slh;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,12 @@ public class RedditReply extends HttpServlet
 {
     private static final long serialVersionUID = 1150046621799636149L;
     private static final String redirect = "http://slh.mybluemix.net/redditauthreply";
-    private static final Credentials credentials = Credentials.webapp(null, null, "yUkDIAYOnlYlNg", "2tRSAPMd4VELiY1YAR-W8JLJbbo");
+    private static final Credentials credentials;
+    
+    static {
+        Properties props = Util.getProperties();
+        credentials = Credentials.webapp(null, null, props.getProperty("reddit.clientId"), props.getProperty("reddit.clientSecret"));
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
