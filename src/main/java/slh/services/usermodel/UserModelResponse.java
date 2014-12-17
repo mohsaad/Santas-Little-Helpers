@@ -1,4 +1,4 @@
-package slh.services;
+package slh.services.usermodel;
 
 import java.util.List;
 

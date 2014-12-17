@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.dean.jraw.RedditOAuth2Client;
-import slh.services.UserModelResponse;
-import slh.services.UserModelResponse.TraitTreeNode;
-import slh.services.UserModelService;
+import slh.services.usermodel.UserModelResponse;
+import slh.services.usermodel.UserModelService;
+import slh.services.usermodel.UserModelResponse.TraitTreeNode;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
