@@ -11,8 +11,9 @@ import twitter4j.conf.ConfigurationBuilder;
 public class TweetGetter 
 {
 
-	private String userKey = "312215961-VEtIIx88ubWxIif7449KbG3Pp9SbKLpawy4J1rI5";
-	private String userSecretKey = "312215961-VEtIIx88ubWxIif7449KbG3Pp9SbKLpawy4J1rI5";
+    // this doesnt even work.. so....
+	private String userKey = "";
+	private String userSecretKey = "3";
 	private ConfigurationBuilder cb;
 	
 	public TweetGetter()
@@ -35,8 +36,8 @@ public class TweetGetter
 	{
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
-			.setOAuthConsumerKey("BWynK8v9BAJpuu1DlemrLNXVJ")
-			.setOAuthConsumerSecret("M3zLXqZmGknGHjB13hTeMThufbzYH0yX4pAHo40Kly8nmYztLV")
+			.setOAuthConsumerKey("")
+			.setOAuthConsumerSecret("")
 			.setOAuthAccessToken(uKey)
 			.setOAuthAccessTokenSecret(uKeySec);
 		return cb;

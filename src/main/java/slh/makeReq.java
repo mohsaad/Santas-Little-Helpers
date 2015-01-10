@@ -54,7 +54,7 @@ public class makeReq
 		StringBuilder totalQ = new StringBuilder();
 		totalQ.append("http://svcs.ebay.com/services/search/FindingService/v1");;
 		totalQ.append("?OPERATION-NAME=findItemsByKeywords");
-		totalQ.append("&SECURITY-APPNAME=Mohammad-2aac-45bb-bd22-49867c29d6c6");
+		totalQ.append("&SECURITY-APPNAME=" + Util.getProperties().getProperty("ebay.appName"));
 		totalQ.append("&RESPONSE-DATA-FORMAT=XML");
 		//totalQ.append("&callback=cb_findItemsByKeywords");
 		totalQ.append("&REST-PAYLOAD");
