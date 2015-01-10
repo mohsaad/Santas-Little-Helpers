@@ -9,3 +9,5 @@ src/main/webapp/WEB-INF/classes
 .classpath
 .settings
 
+#Local web backup
+web_backup
